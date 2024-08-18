@@ -10,6 +10,8 @@ public class Explosive : MonoBehaviour
     [SerializeField] protected float explodeTime;
     [SerializeField] protected int explodeDamage;
 
+    [SerializeField] private string testVar = "Text";
+
     protected void Start()
     {
         StartCoroutine(Explode());
