@@ -13,6 +13,7 @@ public class ActionButton : MonoBehaviour
     public void SetButtonName(string name)
     {
         buttonName.text = name;
+   
     }
 
     public Button GetButton()
