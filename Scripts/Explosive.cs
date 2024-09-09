@@ -10,7 +10,7 @@ public class Explosive : MonoBehaviour
     [SerializeField] protected float explodeTime;
     [SerializeField] protected int explodeDamage;
 
-    [SerializeField] private string testVar = "Text";
+    [SerializeField] private string testVar = "Text"; 
 
     protected void Start()
     {
@@ -41,3 +41,4 @@ public class Explosive : MonoBehaviour
         return Mathf.RoundToInt(damageResult);
     }
 }
+

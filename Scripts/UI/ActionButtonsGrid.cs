@@ -29,7 +29,6 @@ public class ActionButtonsGrid : MonoBehaviour
 
     }
 
-
     private void SpawnAllButtons()
     {
 

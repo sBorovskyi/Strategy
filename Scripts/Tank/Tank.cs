@@ -6,6 +6,9 @@ public class Tank : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float gravityForce;
+    [SerializeField] private float rotateSpeed;
+    [SerializeField] private Transform leftTrackPoint;
+    [SerializeField] private Transform rightTrackPoint;
 
     [SerializeField] private BoxCollider groundCheckCollider;
     [SerializeField] private LayerMask groundlayerMask;
@@ -22,10 +25,11 @@ public class Tank : MonoBehaviour
 
     private void Update()
     {
-        float x = Input.GetAxis("Horizontal");
+       
         float z = Input.GetAxis("Vertical");
 
-        moveVector = new Vector3(x, 0, z);
+        moveVector =  z * transform.forward;
+   
 
         if (IsGrounded())
         {
@@ -36,8 +40,20 @@ public class Tank : MonoBehaviour
             gravityVector.y -= gravityForce * Time.deltaTime;
         }
 
+      
+
         rigidbody.velocity = moveVector * moveSpeed  + gravityVector;
 
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.RotateAround(rightTrackPoint.position, Vector3.up, rotateSpeed * Time.deltaTime);
+        } 
+        
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.RotateAround(leftTrackPoint.position, Vector3.down, rotateSpeed * Time.deltaTime);
+        }
+        
       
     }
 

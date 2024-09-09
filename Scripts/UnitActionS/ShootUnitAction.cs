@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class ShootUnitAction : BaseUnitAction
 {
@@ -24,8 +25,8 @@ public class ShootUnitAction : BaseUnitAction
     {
         if (isAimimg == true)
         {
-            Vector3 lookPosition = Vector3.Lerp(transform.position, target, rotateSpeed * Time.deltaTime);
-            transform.LookAt(lookPosition);
+            Vector3 lookDirection = (target - transform.position).normalized;
+            transform.forward = Vector3.Lerp(transform.forward, lookDirection, rotateSpeed * Time.deltaTime);
         }
     }
 

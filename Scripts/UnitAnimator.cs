@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class UnitAnimator : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject unitObject;
-
  
     private void Start()
     {
@@ -20,8 +20,19 @@ public class UnitAnimator : MonoBehaviour
         {
             shootUnitAction.OnShoot += ShootUnitAction_OnShoot;
         }
+
+        if (unitObject.TryGetComponent(out GrenadeUnitAction grenadeUnitAction))
+        {
+            grenadeUnitAction.OnStartThrow += GrenadeUnitAction_OnStartThrow;
+        }
+
+       
     }
 
+    private void GrenadeUnitAction_OnStartThrow()
+    {
+        animator.SetTrigger("Throw");
+    }
 
     private void ShootUnitAction_OnShoot()
     {
